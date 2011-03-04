@@ -1,8 +1,40 @@
 package Jackalope::JS;
 use Moose;
+use Resource::Pack;
+
+use Path::Class ();
 
 our $VERSION   = '0.01';
 our $AUTHORITY = 'cpan:STEVAN';
+
+extends 'Resource::Pack::Resource';
+
+has '+name' => (default => __PACKAGE__);
+
+sub BUILD {
+    my $self = shift;
+    resource $self => as {
+
+        install_from( Path::Class::File->new( __FILE__ )->parent->subdir('JS') );
+
+        file 'Jackalope'                            => 'Jackalope.js';
+        file 'Jackalope::Util'                      => 'Jackalope/Util.js';
+        file 'Jackalope::Schema'                    => 'Jackalope/Schema.js';
+
+        file 'Jackalope::Client'                    => 'Jackalope/Client.js';
+        file 'Jackalope::Client::Application'       => 'Jackalope/Client/Application.js';
+        file 'Jackalope::Client::Controller'        => 'Jackalope/Client/Controller.js';
+        file 'Jackalope::Client::HistoryController' => 'Jackalope/Client/HistoryController.js';
+        file 'Jackalope::Client::Binding'           => 'Jackalope/Client/Binding.js';
+
+        file 'Jackalope::Client::Resource'          => 'Jackalope/Client/Resource.js';
+
+        file 'Jackalope::Client::View::Form'        => 'Jackalope/Client/View/Form.js';
+        file 'Jackalope::Client::View::Panel'       => 'Jackalope/Client/View/Panel.js';
+        file 'Jackalope::Client::View::TableView'   => 'Jackalope/Client/View/TableView.js';
+
+    };
+}
 
 __PACKAGE__->meta->make_immutable;
 
