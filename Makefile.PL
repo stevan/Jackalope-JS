@@ -7,6 +7,7 @@ all_from 'lib/Jackalope/JS.pm';
 license 'perl';
 
 requires 'Jackalope'                   => 0;
+requires 'Resource::Pack'              => 0;
 
 build_requires 'Test::More'            => 0;
 build_requires 'Test::Moose'           => 0;
