@@ -19,7 +19,7 @@ test(
         for (var i = 0; i < types.length; i++) {
             tester.validation_pass(
                 repo.validate(
-                    { "$ref" : "jackalope/core/types/object" },
+                    { "__ref__" : "jackalope/core/types/object" },
                     repo.get_compiled_schema_by_uri("jackalope/core/" + types[i])
                 ),
                 "... validate the " + types[i] + " schema with the object type"
@@ -29,7 +29,7 @@ test(
 
         tester.validation_pass(
             repo.validate(
-                { "$ref" : "jackalope/core/spec" },
+                { "__ref__" : "jackalope/core/spec" },
                 repo.spec.get_spec()
             ),
             "... validate the spec schema with the spec"

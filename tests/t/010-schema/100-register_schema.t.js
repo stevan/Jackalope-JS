@@ -33,13 +33,13 @@ test(
                             "rel"           : "self",
                             "method"        : "GET",
                             "href"          : "product/{id}/view",
-                            "target_schema" : { "$ref" : "#" }
+                            "target_schema" : { "__ref__" : "#" }
                         },
                         "edit" : {
                             "rel"         : "edit",
                             "href"        : "product/{id}/update",
                             "method"      : "POST",
-                            "data_schema" : { "$ref" : "#" }
+                            "data_schema" : { "__ref__" : "#" }
                         }
                     }
                 }
@@ -56,20 +56,20 @@ test(
                     "description" : "Product List",
                     "type"        : "array",
                     "items"       : {
-                        "$ref" : "/my_schemas/product"
+                        "__ref__" : "/my_schemas/product"
                     },
                     "links" : {
                         "/my_schemas/link/product_listing" : {
                             "rel"           : "/my_schemas/link/product_listing",
                             "method"        : "GET",
                             "href"          : "product/list",
-                            "target_schema" : { "$ref" : "#" }
+                            "target_schema" : { "__ref__" : "#" }
                         },
                         "create" : {
                             "rel"         : "create",
                             "href"        : "product/create",
                             "method"      : "POST",
-                            "data_schema" : { "$ref" : "/my_schemas/product" }
+                            "data_schema" : { "__ref__" : "/my_schemas/product" }
                         }
                     }
                 }
@@ -81,7 +81,7 @@ test(
 
         tester.validation_pass(
             repo.validate(
-                { "$ref" : "/my_schemas/product" },
+                { "__ref__" : "/my_schemas/product" },
                 { "id" : 10, "name" : "Log" }
             ),
             '... validate against the registered product type'
@@ -89,7 +89,7 @@ test(
 
         tester.validation_pass(
             repo.validate(
-                { "$ref" : "/my_schemas/product/list" },
+                { "__ref__" : "/my_schemas/product/list" },
                 [
                     { "id" : 10, "name" : "Log" },
                     { "id" : 11, "name" : "Phone" }

@@ -18,7 +18,7 @@ test(
         for (var i = 0; i < types.length; i++) {
             tester.validation_pass(
                 fixtures.repo.validate(
-                    { "$ref" : "jackalope/core/types/object" },
+                    { "__ref__" : "jackalope/core/types/object" },
                     fixtures.repo.get_compiled_schema_by_uri("jackalope/rest/" + types[i])
                 ),
                 "... validate the " + types[i] + " schema with the object type"

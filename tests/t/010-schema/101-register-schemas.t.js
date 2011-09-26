@@ -40,7 +40,7 @@ test(
                         },
                         target_schema : {
                             type  : "array",
-                            items : { "$ref" : "/schemas/slot" }
+                            items : { "__ref__" : "/schemas/slot" }
                         },
                     }
                 }
@@ -52,7 +52,7 @@ test(
                     date   : { type : "number" },
                     start  : { type : "number" },
                     end    : { type : "number" },
-                    doctor : { "$ref" : "/schemas/doctor" },
+                    doctor : { "__ref__" : "/schemas/doctor" },
                 },
                 links : {
                     "slot.book" : {
@@ -60,8 +60,8 @@ test(
                         href          : "slots/:id",
                         method        : "POST",
                         uri_schema    : { id : { type : "number" } },
-                        data_schema   : { "$ref" : "/schemas/patient" },
-                        target_schema : { "$ref" : "/schemas/appointment" }
+                        data_schema   : { "__ref__" : "/schemas/patient" },
+                        target_schema : { "__ref__" : "/schemas/appointment" }
                     }
                 }
             },
@@ -69,8 +69,8 @@ test(
                 id         : "/schemas/appointment",
                 type       : "object",
                 properties : {
-                    slot    : { "$ref" : "/schemas/slot" },
-                    patient : { "$ref" : "/schemas/patient" },
+                    slot    : { "__ref__" : "/schemas/slot" },
+                    patient : { "__ref__" : "/schemas/patient" },
                 },
                 links : {
                     "appointment.read" : {
@@ -78,7 +78,7 @@ test(
                         href          : "appointment/:id",
                         method        : "GET",
                         uri_schema    : { id : { type : "number" } },
-                        target_schema : { "$ref" : "#" }
+                        target_schema : { "__ref__" : "#" }
                     },
                     "appointment.cancel" : {
                         rel          : "appointment.cancel",
